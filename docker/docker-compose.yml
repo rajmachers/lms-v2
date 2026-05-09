@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  lmsv2-web:
+    build:
+      context: .
+      dockerfile: Dockerfile.moodle
+    container_name: lmsv2-web
+    ports:
+      - "10183:80"
+    volumes:
+      - lmsv2-moodledata:/moodledata
+      - ../scripts:/scripts:ro
+      - ../config/config.php:/var/www/html/moodle/config.php:ro
+    depends_on:
+      - lmsv2-db
+    networks:
+      - lmsv2-net
+    restart: unless-stopped
+
+  lmsv2-db:
+    image: ankane/pgvector:latest
+    container_name: lmsv2-db
+    ports:
+      - "10.139.0.5:5432:5432"
+    environment:
+      POSTGRES_DB: moodlev2
+      POSTGRES_USER: moodlev2user
+      POSTGRES_PASSWORD: moodlev2pass_change_me
+    volumes:
+      - lmsv2-pgdata:/var/lib/postgresql/data
+    networks:
+      - lmsv2-net
+    restart: unless-stopped
+
+networks:
+  lmsv2-net:
+    driver: bridge
+
+volumes:
+  lmsv2-moodledata:
+  lmsv2-pgdata:

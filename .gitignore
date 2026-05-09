@@ -1,0 +1,33 @@
+# Backups
+backups/*.sql
+backups/*.sql.gz
+backups/*.tar.gz
+backups/moodledata/
+
+# Large binary files
+*.tar
+*.tar.gz
+*.sql.gz
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# PHP
+vendor/
+node_modules/
+
+# Moodle cache
+moodledata/cache/
+moodledata/sessions/
+moodledata/localcache/
+moodledata/muc/
+moodledata/temp/
+moodledata/trashdir/

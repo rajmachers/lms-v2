@@ -1,0 +1,4 @@
+# This directory holds DB dumps and moodledata backups.
+# Large files (*.sql, *.tar.gz) are gitignored.
+# Use scripts/backup/backup_lmsv2.sh to create backups.
+# Use scripts/backup/restore_lmsv2.sh to restore.
