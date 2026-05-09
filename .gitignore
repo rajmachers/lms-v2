@@ -1,8 +1,8 @@
-# Backups
-backups/*.sql
+# Backups (keep initial setup dump, ignore large runtime backups)
 backups/*.sql.gz
 backups/*.tar.gz
 backups/moodledata/
+!backups/lmsv2_db_initial_setup.sql
 
 # Large binary files
 *.tar
